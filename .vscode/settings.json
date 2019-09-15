@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "database": ".\\stock.db",
+            "dialect": "SQLite",
+            "name": "Stock"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
