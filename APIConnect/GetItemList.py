@@ -51,10 +51,11 @@ def DataToTableChart(ItemCode):
     Low = inStockChart.GetDataValue(3, i)
     Closing = inStockChart.GetDataValue(4, i)
     Volumn = inStockChart.GetDataValue(5, i)
-    print (day, open, high, low, close, vol)
+    print (Date, Open, High, Low, Closing, Volumn)
     
-    ItemTableChart = DataFrame(item columns=[])
-
+    ItemTableChart = DataFrame(item columns=['Open','High','Low','Closing','Volumn'], index = Date)
+    close = item.close
+    
 
 #KOSPI.db의 테이블에 정보를 입력하는 부분입니다.
 def StoreKospiData():
@@ -65,10 +66,3 @@ def StoreKospiData():
     #
     cursor.execute("INSERT INTO "+code+" VALUES(Date text, Open int, High int, Low int, Closing int, Volumn int)")
     
-
-
-
-
- 
-
-
