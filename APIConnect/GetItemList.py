@@ -1,6 +1,7 @@
 from pandas import Series, DataFrame
 import sqlite3
 import win32com.client 
+import re
 inCpStockCode = win32com.client.Dispatch("CpUtil.CpStockCode")
 inCpCodeMgr = win32com.client.Dispatch("CpUtil.CpCodeMgr")
 inStockChart = win32com.client.Dispatch("CpSysDib.StockChart")
@@ -40,29 +41,29 @@ def StoreKospiData():
     connect = sqlite3.connect("KOSPI.db")
     cursor = connect.cursor()
     
-    inStockChart.SetInputValue(1, ord('2')) # 개수로 조회
-    inStockChart.SetInputValue(4, 20) # 최근 20일 치
-    inStockChart.SetInputValue(5, [0,2,3,4,5,8]) #날짜,시가,고가,저가,종가,거래량
-    inStockChart.SetInputValue(6, ord('D')) # '차트 주가 - 일간 차트 요청
-    inStockChart.SetInputValue(9, ord('1')) # 수정주가 사용
-    inStockChart.BlockRequest()
-
-    len = inStockChart.GetHeaderValue(3)
+    cursor.execute("SELECT name from sqlite_master where type= 'table'")
+    Fetch = cursor.fetchone()
+    ItemCode = str(filter(str.isdigit,Fetch))
+    print(ItemCode)
 
     for i in enumerate(CodeList1):
-        ItemCode = cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        inStockChart.SetInputValue(0, ItemCode) # 종목코드
         print(ItemCode)
-
-        for i in range(len):
-            Date = inStockChart.GetDataValue(0, i)
-            Open = inStockChart.GetDataValue(1, i)
-            High = inStockChart.GetDataValue(2, i)
-            Low = inStockChart.GetDataValue(3, i)
-            Closing = inStockChart.GetDataValue(4, i)
-            Volumn = inStockChart.GetDataValue(5, i)
-            #cursor.execute("INSERT INTO "+code+" VALUES("+Date+", "+Open+", "+High+", "+Low+", "+Closing+", "+Volumn+")")
-            print (Date, Open, High, Low, Closing, Volumn)
+        inStockChart.SetInputValue(0, ItemCode) # 종목코드
+        inStockChart.SetInputValue(1, ord('2')) # 개수로 조회
+        inStockChart.SetInputValue(4, 20) # 최근 20일 치
+        inStockChart.SetInputValue(5, [0,2,3,4,5,8]) #날짜,시가,고가,저가,종가,거래량
+        inStockChart.SetInputValue(6, ord('D')) # '차트 주가 - 일간 차트 요청
+        inStockChart.SetInputValue(9, ord('1')) # 수정주가 사용
+        inStockChart.BlockRequest()
+        Date = inStockChart.GetDataValue(0, i)
+        Open = inStockChart.GetDataValue(1, i)
+        High = inStockChart.GetDataValue(2, i)
+        Low = inStockChart.GetDataValue(3, i)
+        Closing = inStockChart.GetDataValue(4, i)
+        Volumn = inStockChart.GetDataValue(5, i)
+        #cursor.execute("INSERT INTO "+code+" VALUES("+Date+", "+Open+", "+High+", "+Low+", "+Closing+", "+Volumn+")")
+        print (Date, Open, High, Low, Closing, Volumn)
     connect.commit()
     connect.close()
 
+StoreKospiData()
