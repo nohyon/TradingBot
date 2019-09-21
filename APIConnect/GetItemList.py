@@ -34,8 +34,6 @@ def WriteKosdaq():
 '''
 
 
-
-
 #KOSPI.db의 테이블에 정보를 입력하는 부분입니다.
 def StoreKospiData():
     connect = sqlite3.connect("KOSPI.db")
