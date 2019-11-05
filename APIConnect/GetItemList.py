@@ -9,7 +9,7 @@ inStockChart = win32com.client.Dispatch("CpSysDib.StockChart")
 CodeList1 = inCpCodeMgr.GetStockListByMarket(1) #코스피
 CodeList2 = inCpCodeMgr.GetStockListByMarket(2) #코스닥
 
-'''
+''' //1회용 입니다.
 #코스피의 모든종목코드를 KOSPI.db에 기록하는 function입니다.
 def WriteKospi():
     connect = sqlite3.connect("KOSPI.db")

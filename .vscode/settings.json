@@ -6,5 +6,6 @@
             "name": "Stock"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.pythonPath": "/usr/bin/python3"
 }

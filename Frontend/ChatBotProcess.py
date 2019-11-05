@@ -17,3 +17,8 @@ def GetMessage(Message):
 
 SplittedMessage = message7.split(' ')
 print (SplittedMessage)
+
+def ChatBotProcess(message):
+    import APIConnect/ItemInquiry
+    
+    
