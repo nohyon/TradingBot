@@ -18,15 +18,15 @@ def get_message(bot, update):
     import ChatBotProcess
     MessageText = update.message.text
     ChatBotProcess(MessageText)
-'''
+
 #Cybos 연결상태를 확인하는 function입니다.
 def CybosConnection():
-    from APIConnection import SendConnectionStatus
+    from APIConnect.APIConnection import SendConnectionStatus
     if SendConnectionStatus == True:
         print("Cybos에 연결되었습니다.")
     else:
         print("Cybos에 연결하는데 문제가 생겼습니다.")
-'''
+
 
 MyToken = "965965436:AAFOOov1fgiVVjdMed7s8lRyQM5wf2Par_Y"
 bot = telegram.Bot(token = MyToken)
@@ -47,14 +47,15 @@ def OrderFilled:
 '''
 #전체종목 개수를 확인하는 function입니다
 def EntireItem():
-    from ItemInquiry import EntireItem
-    Item = EntireItem
+    from APIConnect.ItemInquiry import EntireItem
+    Item = EntireItem()
     print("전체 종목의 수는"+Item+"개 입니다.")
 
 #종목검색
 def ItemSearch(MessageText):
+    from APIConnect.ItemInquiry import ItemInfo
     update.message.reply_text(ItemName + "종목을 검색합니다.")
-    return(ItemName)
+    
     #주식코드
     #종목이름
     #현재가
