@@ -28,7 +28,7 @@ def CybosConnection():
         print("Cybos에 연결하는데 문제가 생겼습니다.")
 
 
-MyToken = "965965436:AAFOOov1fgiVVjdMed7s8lRyQM5wf2Par_Y"
+MyToken = ""
 bot = telegram.Bot(token = MyToken)
 update = bot.getUpdates()
 
