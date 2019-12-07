@@ -15,7 +15,7 @@ def StoreMessage(m):
 
 # 메세지에 대답하는 function입니다.
 def get_message(bot, update):
-    import ChatBotProcess
+    from Frontend.ChatBotProcess import #챗봇모델
     MessageText = update.message.text
     ChatBotProcess(MessageText)
 
