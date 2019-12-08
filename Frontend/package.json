@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "description": "TradingBot의 프론트엔드 입니다.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nohyon/TradingBot.git"
+  },
+  "author": "nohyon",
+  "devDependencies": {
+    "electron": "^7.1.3"
+  }
+}
