@@ -16,9 +16,6 @@ function createWindow () {
   // and load the index.html of the app.
   win.loadFile('index.html')
 
-  // 개발자 도구를 엽니다.
-  win.webContents.openDevTools()
-
   // 창이 닫힐 때 발생합니다
   win.on('closed', () => {
     // window 객체에 대한 참조해제. 여러 개의 창을 지원하는 앱이라면 
