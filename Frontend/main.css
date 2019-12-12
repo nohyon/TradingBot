@@ -5,3 +5,24 @@ h1{
     font-family: Arial Black;
     color: white
 }
+a{
+    color: snow;
+    text-decoration-line: none;
+}
+#maincontainer{
+    float: left;
+    height: 350px;
+    width: 350px;
+    padding: 10px;
+    margin: 5px;
+    border-style: solid;
+    border-color: slategray;
+}
+#newscontainer{
+    height: auto;
+    width: auto;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-color: ivory;
+}

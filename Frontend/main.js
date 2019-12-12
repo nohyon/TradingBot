@@ -1,15 +1,9 @@
 const electron = require('electron')
 const { app, BrowserWindow} = require('electron')
 
-var PythonShell = require('python-shell');
-PythonShell.run('APIConnect/ConnectionStatus.py',null,function(err) {
-  if (err) throw err;
-  console.log('finished');
-});
-
 let win
 
-function createWindow () {
+function createWindow() {
   // 브라우저 창을 생성합니다.
   win = new BrowserWindow({
     width: 800,
